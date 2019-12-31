@@ -17,7 +17,8 @@ RUN apk add --update --no-cache openrc && \
       /etc/init.d/modules-load \
       /etc/init.d/modloop && \
     sed -i 's/cgroup_add_service /# cgroup_add_service /g' /lib/rc/sh/openrc-run.sh && \
-    sed -i 's/VSERVER/DOCKER/Ig' /lib/rc/sh/init.sh
+    sed -i 's/VSERVER/DOCKER/Ig' /lib/rc/sh/init.sh && \
+    sed -i 's/bash/sh/Ig' /lib/rc/sh/init.sh
 
 # Mount cgroup
 VOLUME ["/sys/fs/cgroup"]
