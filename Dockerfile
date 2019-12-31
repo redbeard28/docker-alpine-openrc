@@ -1,7 +1,7 @@
 FROM alpine
 LABEL maintainer="Jeremie CUADRADO"
 
-RUN apk add --update --no-cache openrc && \
+RUN apk add --update --no-cache openrc bash && \
     sed -i 's/^\(tty\d\:\:\)/#\1/g' /etc/inittab && \
     sed -i \
       -e 's/#rc_sys=".*"/rc_sys="docker"/g' \
@@ -17,8 +17,7 @@ RUN apk add --update --no-cache openrc && \
       /etc/init.d/modules-load \
       /etc/init.d/modloop && \
     sed -i 's/cgroup_add_service /# cgroup_add_service /g' /lib/rc/sh/openrc-run.sh && \
-    sed -i 's/VSERVER/DOCKER/Ig' /lib/rc/sh/init.sh && \
-    sed -i 's/bash/sh/Ig' /lib/rc/sh/init.sh
+    sed -i 's/VSERVER/DOCKER/Ig' /lib/rc/sh/init.sh
 
 # Mount cgroup
 VOLUME ["/sys/fs/cgroup"]
