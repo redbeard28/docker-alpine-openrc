@@ -5,7 +5,7 @@ This image is used in addition of [molecule framework](https://molecule.readthed
 
 # Howto use it
  1. Install docker
- 2. docker pull redbeard28/docker-centos7-ansible
+ 2. docker pull redbeard28/docker-alpine-openrc
 
 
 
